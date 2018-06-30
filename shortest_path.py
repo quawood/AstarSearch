@@ -2,7 +2,7 @@ import pygame
 import numpy as np
 from Graph import Graph
 from Node import Node
-
+from controller import A_star
 
 pygame.init()
 
@@ -64,6 +64,12 @@ while running:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_d:
                 currentNode = None
+            elif event.key == pygame.K_c:
+                graph = Graph()
+                currentNode = None
+            elif event.key == pygame.K_RETURN:
+                A_star(graph, 0, len(graph.nodes) - 1)
+
 
     pygame.display.update()
     clock.tick(60)

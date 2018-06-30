@@ -1,23 +1,22 @@
 import numpy as np
 from Graph import Graph
 
-def A_star():
+def reconstruct_path(cameFrom, current):
+    print('will finish soon')
 
-    graph = Graph(np.array([]))
-
-
-    start = 0
-    goal = len(graph.nodes) - 1
-
+def A_star(graph, start, goal):
     closedSet = []
     openSet = [start]
     gValues = [0]
     fValues = [graph.heuristic_cost_approximate(start, goal)]
-    cameFrom = [None]
+    cameFrom = []
 
     while not openSet == []:
         index = fValues.index(min(fValues))
         current = index
+
+        if current == goal:
+            return reconstruct_path(cameFrom, current)
 
         del openSet[openSet.index(current)]
         closedSet.append(index)
