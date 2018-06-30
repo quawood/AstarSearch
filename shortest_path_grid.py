@@ -6,7 +6,8 @@ from search import A_star
 rows = 50
 columns = 50
 cell_radius = 7
-pathGame = Game(rows, columns, cell_radius)
+alpha = 0.8
+pathGame = Game(cell_radius, rows, columns)
 
 
 def draw(game):
@@ -78,9 +79,9 @@ def update(g):
                             game.graph.adjacency[:, node.num] = 0
 
                     game.findingPath = True
-                    game.graph = A_star(game.graph, update, game, 0.8)
+                    game.graph = A_star(game.graph, update, game, alpha)
             elif event.key == pygame.K_c:
-                return Game(rows, columns, cell_radius)
+                return Game(cell_radius, rows, columns)
     pygame.display.update()
     game.clock.tick(60)
 

@@ -7,10 +7,14 @@ from graphs.Node import Node
 
 class Game:
 
-    def __init__(self, rows, columns, node_radius):
+    def __init__(self, node_radius, rows=None, columns=None):
         self.rows, self.cols = rows, columns
         self.node_radius = node_radius
-        self.gameWidth, self.gameHeight = 2 * node_radius * columns, 2 * node_radius * rows
+
+        if rows is not None:
+            self.gameWidth, self.gameHeight = 2 * node_radius * columns, 2 * node_radius * rows
+        else:
+            self.gameWidth, self.gameHeight = 500, 500
 
         self.graph = Graph()
         self.currentNode = None
@@ -28,7 +32,9 @@ class Game:
         self.running = True
         self.dragging = False
 
-        self.create_nodes()
+        if rows is not None:
+            self.create_nodes()
+
 
     # create nodes for graph in a grid
     def create_nodes(self):
