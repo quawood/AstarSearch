@@ -6,7 +6,7 @@ The A* search algorithm can be used to do this
 
 ![A* shortest path solution shown in green](https://github.com/quawood/AstarSearch/blob/master/assets/capture1.png)
 
-*shortest path from A shown in green*
+*shortest path from A star shown in green*
 
 
 Within this project also exists a visual graph creator, which I will later integrate A* search with to find shortest paths in arbitrarily create graphs.
