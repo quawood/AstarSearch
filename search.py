@@ -1,4 +1,4 @@
-def A_star(g, update, game):
+def A_star(g, update, game, alpha=0.5, ):
     graph = g
     graph.set_neighbors()
     closedSet = [] # set of previously visited nodes
@@ -41,6 +41,8 @@ def A_star(g, update, game):
 
             neighbor.cameFrom = current
             neighbor.gValue = tentative_gValue
-            neighbor.fValue = neighbor.gValue + graph.heuristic_cost_approximate(neighbor)
+
+            # weight g and h cost based on alpha value
+            neighbor.fValue = (1 - alpha) * neighbor.gValue + alpha * graph.heuristic_cost_approximate(neighbor)
         game.graph = graph
         update(game)

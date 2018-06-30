@@ -45,7 +45,7 @@ class Node:
         elif self.isWall:
             return 0, 0, 0
         elif self.isSolution:
-            return 0, 0, 0
+            return 82, 239, 43
         else:
             if self.inOpen:
                 return 91, 227, 255

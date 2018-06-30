@@ -78,7 +78,7 @@ def update(g):
                             game.graph.adjacency[:, node.num] = 0
 
                     game.findingPath = True
-                    game.graph = A_star(game.graph, update, game)
+                    game.graph = A_star(game.graph, update, game, 0.8)
             elif event.key == pygame.K_c:
                 return Game(rows, columns, cell_radius)
     pygame.display.update()
