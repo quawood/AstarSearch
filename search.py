@@ -1,7 +1,10 @@
-def A_star(g, update, game, alpha=0.5, ):
+from graphs.Graph import distance_between
+
+
+def a_star(g, update, game, alpha=0.5, ):
     graph = g
     graph.set_neighbors()
-    closedSet = [] # set of previously visited nodes
+    closedSet = []  # set of previously visited nodes
 
     startNode = [node for node in graph.nodes if node.isStart][0]
     openSet = [startNode]  # set of nodes that have been discovered but not visited
@@ -13,6 +16,7 @@ def A_star(g, update, game, alpha=0.5, ):
         current = min(openSet, key=lambda x: x.fValue)
 
         if current.isGoal:
+            current.isSolution = True
             atStart = False
             while not atStart:
                 if current.isStart:
@@ -35,7 +39,7 @@ def A_star(g, update, game, alpha=0.5, ):
                 openSet.append(neighbor)
                 neighbor.inOpen = True
 
-            tentative_gValue = current.gValue + graph.distance_between(current, neighbor)
+            tentative_gValue = current.gValue + distance_between(current, neighbor)
             if tentative_gValue >= neighbor.gValue:
                 continue
 

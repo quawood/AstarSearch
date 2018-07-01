@@ -2,16 +2,15 @@ import numpy as np
 import math
 
 
+def distance_between(node1, node2):
+    return math.sqrt(math.pow(node1.x - node2.x, 2) + math.pow(node1.y - node2.y, 2))
+
+
 class Graph:
 
     def __init__(self):
         self.adjacency = np.zeros((0, 0))
         self.nodes = []
-        self.start = 0
-        self.goal = 0
-
-    def distance_between(self, node1, node2):
-        return math.sqrt(math.pow(node1.x - node2.x, 2) + math.pow(node1.y - node2.y, 2))
 
     def heuristic_cost_approximate(self, node):
         goal = [node for node in self.nodes if node.isGoal][0]
@@ -29,3 +28,17 @@ class Graph:
             for node2 in self.nodes:
                 if self.adjacency[node1.num, node2.num] == 1:
                     node1.neighbors.append(node2)
+
+    @property
+    def hasStart(self):
+        for node in self.nodes:
+            if node.isStart:
+                return True
+        return False
+
+    @property
+    def hasGoal(self):
+        for node in self.nodes:
+            if node.isGoal:
+                return True
+        return False

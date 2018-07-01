@@ -1,7 +1,7 @@
 import pygame
 
 from game.Game import Game
-from search import A_star
+from search import a_star
 
 rows = 50
 columns = 50
@@ -79,7 +79,7 @@ def update(g):
                             game.graph.adjacency[:, node.num] = 0
 
                     game.findingPath = True
-                    game.graph = A_star(game.graph, update, game, alpha)
+                    game.graph = a_star(game.graph, update, game, alpha)
             elif event.key == pygame.K_c:
                 return Game(cell_radius, rows, columns)
     pygame.display.update()

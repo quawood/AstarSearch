@@ -35,7 +35,6 @@ class Game:
         if rows is not None:
             self.create_nodes()
 
-
     # create nodes for graph in a grid
     def create_nodes(self):
         self.graph.adjacency = np.zeros((self.rows * self.cols, self.rows * self.cols))
